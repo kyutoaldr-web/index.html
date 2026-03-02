@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SDIHS - Santo Domingo Integrated High School</title>
+    <link rel="icon" type="image/x-icon" href="school.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+        header {
+            background-color: #ADD8E6;
+            color: #000;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            background-color: #800080;
+            color: white;
+            padding: 0.5em 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav-item {
+            position: relative;
+        }
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            display: block;
+            cursor: pointer;
+        }
+        .nav-item > a:hover {
+            background-color: #D8BFD8;
+            color: black;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #800080;
+            min-width: 220px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            z-index: 100;
+        }
+        .dropdown li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7em 1em;
+            display: block;
+        }
+        .dropdown li a:hover {
+            background-color: #D8BFD8;
+            color: black;
+        }
+        .dropdown.active {
+            display: block;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 25%; 
+            background-color: #f0f0f0;
+            padding: 50px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 16px; 
+            text-decoration: none;
+            color: #800080; 
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .content {
+            width: 75%; 
+            padding: 30px;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #eee;
+        }
+        #introduction {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SDIHS</h1>
+        <p>Santo Domingo Integrated High School</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="nav-item">
+                <a href="compe.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a onclick="toggleDropdown(this)">Activities</a>
+                <ul class="dropdown">
+                    <li><a href="keith.html">Act 1</a></li>
+                    <li><a href="yes.html">act2</a></li>
+                    <li><a href="img.html">Act 3</a></li>
+                    
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="bago.html">Assessment (ICT Quiz)</a>
+            </li>
+            <li class="nav-item">
+                <a onclick="toggleDropdown(this)">About</a>
+                <ul class="dropdown">
+                    <li><a href="#" onclick="showContent('person1')">Katherene Pastera</a></li>
+                    <li><a href="#" onclick="showContent('person2')">Frecious Anne Agustin</a></li>
+                    <li><a href="#" onclick="showContent('person3')">Maria Kyla Merced I Lacatan</a></li>
+                    <li><a href="#" onclick="showContent('person4')">Carl Martin Pid Sancha</a></li>
+                    <li><a href="#" onclick="showContent('person6')">Keith Harvey C Limdico</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+    <a onclick="toggleDropdown(this)">ICT Quiz Blaster</a>
+    <ul class="dropdown">
+        <li><a href="#" onclick="showContent('ict-quiz-blaster')">Play Quiz</a></li>
+    </ul>
+</li>
+
+</li>
+
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" onclick="showContent('game-content')">Content</a></li>
+                <li><a href="#" onclick="showContent('content-standard')">CONTENT STANDARD</a></li>
+                <li><a href="#" onclick="showContent('performance-standard')">PERFORMANCE STANDARD</a></li>
+                <li><a href="#" onclick="showContent('learning-competencies')">LEARNING COMPETENCIES</a></li>
+                <li><a href="#" onclick="showContent('learning-objective')">OBJECTIVE</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="introduction">
+                <h2>Welcome to SDIHS</h2>
+                <p>Explore our school's profile, Senior High School (SHS) and Junior High School (JHS) programs. Click on the links in the sidebar or About menu to view more details.</p>
+            </div>
+            
+            <div id="game-content" style="display: none;">
+                <h2>ICT - TLE SHOOTING QUIZ GAME</h2>
+                <p>Learn While You Aim – A Fun Way to Master TLE Concepts!</p>
+                <h3>What is This Game?</h3>
+                <p>This interactive quiz game combines simple shooting mechanics with Technology and Livelihood Education (TLE) questions to make learning more engaging. You’ll aim at moving targets, and each hit will challenge you with a key TLE topic question – get it right to keep playing, or start fresh if you miss!</p>
+                <h3>How to Play</h3>
+                <ol>
+                    <li>Move Your Gun: Hover your mouse over the game canvas to position the white player bar at the bottom.</li>
+                    <li>Shoot Targets: Click anywhere on the canvas to fire bullets at the colorful moving circles (targets).</li>
+                    <li>Answer Questions: When you hit a target, a question panel will pop up. Type your answer in the box and click "Submit".
+                        <ul>
+                            <li>Correct Answer: The panel closes, and you continue until all targets are hit.</li>
+                            <li>Wrong Answer: The game restarts, and you’ll see the correct answer to learn from.</li>
+                        </ul>
+                    </li>
+                    <li>Win Condition: Hit all 6 targets and answer every question correctly to win!</li>
+                    <li>Restart: If you need to start over, use the "Restart Game" button after a win or wrong answer.</li>
+                </ol>
+                <h3>TLE Topics Covered</h3>
+                <p>The game tests your knowledge on essential TLE concepts like:
+                <ul>
+                    <li>Tools and technologies (pneumatic, hydraulic)</li>
+                    <li>Basic electronics (Ohm’s Law)</li>
+                    <li>ICT fundamentals</li>
+                    <li>Philippine laws (cyberbullying, intellectual property)</li>
+                </ul></p>
+            </div>
+
+            <div id="content-standard" style="display: none;">
+                <h2>CONTENT STANDARD</h2>
+                <p>The learner demonstrates understanding of:
+                <ol>
+                    <li>ICT as a tool for online marketing</li>
+                    <li>Digital citizenship</li>
+                    <li>ICT-related legal issues</li>
+                    <li>Key concepts, principles, and laws related to technical tools, electronics fundamentals, and Philippine legislation relevant to technology and society</li>
+                </ol></p>
+            </div>
+
+            <div id="performance-standard" style="display: none;">
+                <h2>PERFORMANCE STANDARD</h2>
+                <p>The learner independently:
+                <ul>
+                    <li>Identifies, explains, and applies knowledge of technical tools, electronics principles, ICT terminology, and relevant Philippine laws in practical and assessment contexts with accuracy</li>
+                    <li>Uses ICT as a tool for online marketing purposes</li>
+                    <li>Practices responsible digital citizenship</li>
+                    <li>Complies with and advocates for adherence to ICT-related legal regulations</li>
+                </ul></p>
+            </div>
+
+            <div id="learning-competencies" style="display: none;">
+                <h2>LEARNING COMPETENCIES</h2>
+                <ol>
+                    <li>Identifies types of power tools based on their operating principle (pneumatic, hydraulic)</li>
+                    <li>States Ohm’s Law and its relationship between voltage, current, and resistance</li>
+                    <li>Explains the coverage of Republic Act (RA) 10627 (Anti-Cyberbullying Act of 2015)</li>
+                    <li>Defines ICT (Information and Communications Technology) and its core components</li>
+                    <li>Describes the purpose of Republic Act (RA) 8293 (Intellectual Property Code of the Philippines)</li>
+                    <li>Explains how ICT can be used as a tool for online marketing</li>
+                    <li>Demonstrates responsible behavior as a digital citizen</li>
+                    <li>Identifies and complies with ICT-related legal requirements</li>
+                </ol>
+            </div>
+
+            <div id="learning-objective" style="display: none;">
+                <h2>LEARNING OBJECTIVES</h2>
+                <p>At the end of the lesson/activity, the learner will be able to:</p>
+                <ol>
+                    <li>Differentiate between pneumatic and hydraulic tools by naming their respective operating media</li>
+                    <li>Recall and articulate Ohm’s Law correctly</li>
+                    <li>Identify the issue addressed by RA 10627</li>
+                    <li>Provide the full meaning of ICT</li>
+                    <li>State what RA 8293 protects</li>
+                    <li>Describe ways to use ICT for online marketing</li>
+                    <li>Practice responsible digital citizenship behaviors</li>
+                    <li>Recognize and follow ICT-related legal guidelines</li>
+                </ol>
+            </div>
+
+            <div id="person1" style="display: none;">
+                <h2>Katherene Pastera</h2>
+                <p>- President of Makiling</p>
+                <p>- Academic Achiever</p>
+                <p>- Model</p>
+                <p>- Ambassador</p>
+                <p>- Makeup Professional</p>
+                <p>- Dance instructor</p>
+                <p>-og dancer of seizes</p>
+                
+            </div>
+            <div id="person2" style="display: none;">
+                <h2>Frecious Anne Agustin</h2>
+                <p>- Academic Achiever since G8
+                <p>- Muay thai 2024</p> 
+                <p>- Teakwando Martial Arts 2018</p>
+                <p>- I love Wattpad/reading</p>
+                <p>- I love watching movies</p>
+            </div>
+            <div id="person3" style="display: none;">
+                <h2>Maria Kyla Merced I Lacatan</h2>
+                <p>• Academic Achiever since Gr7</p>
+                <p>• Miss Universe 2019</p>
+                <p>• Information Leader Of SDRRM</p>
+                <p>• Top 1 Anime Lover</p>
+                <p>• Top 1 Cute sa makiling</p>
+            </div>
+            <div id="person4" style="display: none;">
+                <h2>Carl Martin Pid Sancha</h2>
+                <p>- Esport player since 2019</p>
+                <p>- Basketball position:shooting guard</p>
+                <p>- Esports Team Captain for Mobile Legends</p>
+                <p>-acadamic achiever</p>
+              
+            </div>
+            <div id="person6" style="display: none;">
+                <h2>Keith Harvey C Limdico</h2>
+                <p>- Eagle Scout awardee</p>
+                <p>- Senior Crew Leader (2025-2026)</p>
+                <p>- Araling Panlipunan Club Vice President (2025-2026)</p>
+                <p>- Araling Panlipunan Club P.IO (2024-2025)</p>
+                <p>- Scout Representative Santo Domingo Integrated High School</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+    <p>pidcarl9@gmil.com| 09919628297</p>
+    <p>10 - Makiling</p>
+    <p>© 2026 SDIHS ICT QUIZ BLASTER. All rights reserved.</p>
+</footer>
+
+    <script>
+        function toggleDropdown(element) {
+            const allDropdowns = document.querySelectorAll('.dropdown');
+            allDropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+            const dropdown = element.nextElementSibling;
+            dropdown.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item')) {
+                const allDropdowns = document.querySelectorAll('.dropdown');
+                allDropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+            }
+        });
+
+        function showContent(contentId) {
+            var contents = document.querySelectorAll('.content > div');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].style.display = 'none';
+            }
+            document.getElementById(contentId).style.display = 'block';
+        }
+        
+    </script>
+</body>
+</html>
