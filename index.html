@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+               <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>SDIHS - Santo Domingo Integrated High School</title>
@@ -72,7 +73,7 @@
             padding: 20px;
         }
         .sidebar {
-            width: 25%; 
+            width: 25%;
             background-color: #f0f0f0;
             padding: 50px;
         }
@@ -82,15 +83,15 @@
         }
         .sidebar a {
             display: block;
-            padding: 15px 16px; 
+            padding: 15px 16px;
             text-decoration: none;
-            color: #800080; 
+            color: #800080;
         }
         .sidebar a:hover {
             background-color: #ddd;
         }
         .content {
-            width: 75%; 
+            width: 75%;
             padding: 30px;
         }
         footer {
@@ -101,6 +102,22 @@
         #introduction {
             padding: 20px;
         }
+
+        /* --- Game Specific Styles (from ict-quiz-blaster.html) --- */
+        #ict-quiz-blaster-game {
+            background: #1a1a1a; /* Background for the game content itself */
+            color: white;
+            padding-top: 20px; /* Add some top padding */
+        }
+        #gameCanvas { background: #2d3748; display: block; margin: 20px auto; border: 2px solid #4a5568; }
+        #ui { text-align: center; margin: 10px 0; }
+        #score { font-size: 24px; margin-bottom: 10px; }
+        #questionPanel { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #2d3748; padding: 25px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); width: 80%; max-width: 500px; z-index: 101; /* Ensure it's above other elements */ }
+        #question { font-size: 20px; margin-bottom: 15px; }
+        #answerInput { width: 100%; padding: 10px; font-size: 18px; margin-bottom: 15px; color: black; /* Make input text visible */ }
+        #submitBtn, #restartBtn { padding: 10px 20px; font-size: 18px; cursor: pointer; border: none; border-radius: 5px; }
+        #submitBtn { background: #38a169; color: white; margin-right: 10px; }
+        #restartBtn { background: #e53e3e; color: white; display: none; }
     </style>
 </head>
 <body>
@@ -120,7 +137,7 @@
                     <li><a href="keith.html">Act 1</a></li>
                     <li><a href="yes.html">act2</a></li>
                     <li><a href="img.html">Act 3</a></li>
-                    
+
                 </ul>
             </li>
             <li class="nav-item">
@@ -137,14 +154,11 @@
                 </ul>
             </li>
             <li class="nav-item">
-    <a onclick="toggleDropdown(this)">ICT Quiz Blaster</a>
-    <ul class="dropdown">
-        <li><a href="#" onclick="showContent('ict-quiz-blaster')">Play Quiz</a></li>
-    </ul>
-</li>
-
-</li>
-
+                <a onclick="toggleDropdown(this)">ICT Quiz Blaster</a>
+                <ul class="dropdown">
+                    <li><a href="#" onclick="showContent('ict-quiz-blaster')">Play Quiz</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
@@ -163,7 +177,7 @@
                 <h2>Welcome to SDIHS</h2>
                 <p>Explore our school's profile, Senior High School (SHS) and Junior High School (JHS) programs. Click on the links in the sidebar or About menu to view more details.</p>
             </div>
-            
+
             <div id="game-content" style="display: none;">
                 <h2>ICT - TLE SHOOTING QUIZ GAME</h2>
                 <p>Learn While You Aim – A Fun Way to Master TLE Concepts!</p>
@@ -252,12 +266,12 @@
                 <p>- Makeup Professional</p>
                 <p>- Dance instructor</p>
                 <p>-og dancer of seizes</p>
-                
+
             </div>
             <div id="person2" style="display: none;">
                 <h2>Frecious Anne Agustin</h2>
                 <p>- Academic Achiever since G8
-                <p>- Muay thai 2024</p> 
+                <p>- Muay thai 2024</p>
                 <p>- Teakwando Martial Arts 2018</p>
                 <p>- I love Wattpad/reading</p>
                 <p>- I love watching movies</p>
@@ -276,7 +290,7 @@
                 <p>- Basketball position:shooting guard</p>
                 <p>- Esports Team Captain for Mobile Legends</p>
                 <p>-acadamic achiever</p>
-              
+
             </div>
             <div id="person6" style="display: none;">
                 <h2>Keith Harvey C Limdico</h2>
@@ -286,7 +300,27 @@
                 <p>- Araling Panlipunan Club P.IO (2024-2025)</p>
                 <p>- Scout Representative Santo Domingo Integrated High School</p>
             </div>
-            
+
+            <!-- ICT Quiz Blaster Game Content -->
+            <div id="ict-quiz-blaster" style="display: none;">
+                <h2>ICT Quiz Blaster</h2>
+                <p>Time to test your knowledge!</p>
+
+                <div id="ict-quiz-blaster-game">
+                    <div id="ui">
+                        <div id="score">Score: 0 | Targets Hit: 0</div>
+                    </div>
+                    <canvas id="gameCanvas" width="800" height="500"></canvas>
+                    <div id="questionPanel">
+                        <div id="question"></div>
+                        <input type="text" id="answerInput" placeholder="Type your answer here...">
+                        <button id="submitBtn">Submit Answer</button>
+                        <button id="restartBtn" onclick="restartGame()">Restart Game</button>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
@@ -295,30 +329,252 @@
     <p>10 - Makiling</p>
     <p>© 2026 SDIHS ICT QUIZ BLASTER. All rights reserved.</p>
 </footer>
+<script>
+    function toggleDropdown(element) {
+        const allDropdowns = document.querySelectorAll('.dropdown');
+        allDropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+        const dropdown = element.nextElementSibling;
+        dropdown.classList.toggle('active');
+    }
 
-    <script>
-        function toggleDropdown(element) {
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-item')) {
             const allDropdowns = document.querySelectorAll('.dropdown');
             allDropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-            const dropdown = element.nextElementSibling;
-            dropdown.classList.toggle('active');
         }
+    });
 
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-item')) {
-                const allDropdowns = document.querySelectorAll('.dropdown');
-                allDropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+    // Game Setup (Moved inside a function to be called when game is displayed)
+    let canvas, ctx, scoreEl, questionPanel, questionEl, answerInput, submitBtn, restartBtn;
+
+    let score = 0;
+    let targetsHit = 0;
+    let gameActive = true;
+    let currentTarget = null;
+    let player = { x: 0, y: 0, width: 40, height: 20 }; // Initialized later
+    let targets = []; // Initialized later
+    let bullets = [];
+
+    function getRandomSpeed() {
+        return (Math.random() * 2) + 1;
+    }
+
+    function initializeGameElements() {
+        canvas = document.getElementById('gameCanvas');
+        ctx = canvas.getContext('2d');
+        scoreEl = document.getElementById('score');
+        questionPanel = document.getElementById('questionPanel');
+        questionEl = document.getElementById('question');
+        answerInput = document.getElementById('answerInput');
+        submitBtn = document.getElementById('submitBtn');
+        restartBtn = document.getElementById('restartBtn');
+
+        // Initialize player position relative to canvas after it's loaded
+        player.x = canvas.width / 2 - player.width / 2;
+        player.y = canvas.height - 30;
+
+        // Clear existing event listeners to prevent duplicates if game is re-initialized
+        canvas.removeEventListener('click', shoot);
+        submitBtn.removeEventListener('click', checkAnswer);
+        window.removeEventListener('mousemove', handleMouseMove);
+
+        canvas.addEventListener('click', shoot);
+        submitBtn.addEventListener('click', checkAnswer);
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // Re-initialize targets
+        targets = [
+            { x: 100, y: 100, size: 30, color: '#f6ad55', vx: getRandomSpeed(), vy: getRandomSpeed(), question: { text: 'What type of tool uses compressed air?', correct: 'pneumatic' } },
+            { x: 300, y: 80, size: 30, color: '#63b3ed', vx: -getRandomSpeed(), vy: getRandomSpeed(), question: { text: 'Which law relates voltage, current, and resistance?', correct: 'ohms law' } },
+            { x: 500, y: 120, size: 30, color: '#f56565', vx: getRandomSpeed(), vy: -getRandomSpeed(), question: { text: 'RA 10627 addresses what issue?', correct: 'cyberbullying' } },
+            { x: 700, y: 90, size: 30, color: '#48bb78', vx: -getRandomSpeed(), vy: -getRandomSpeed(), question: { text: 'What does ICT stand for?', correct: 'information communications and technology' } },
+            { x: 200, y: 200, size: 30, color: '#9f7aea', vx: getRandomSpeed(), vy: getRandomSpeed(), question: { text: 'Which tool uses liquid pressure to operate?', correct: 'hydraulic' } },
+            { x: 600, y: 220, size: 30, color: '#ed8936', vx: -getRandomSpeed(), vy: getRandomSpeed(), question: { text: 'RA 8293 protects what?', correct: 'intellectual property' } },
+        ];
+    }
+
+    // Event Listener for Mouse Move (extracted to a named function)
+    function handleMouseMove(e) {
+        if (!canvas) return; // Ensure canvas is initialized
+        const rect = canvas.getBoundingClientRect();
+        player.x = e.clientX - rect.left - player.width / 2;
+    }
+
+    // Draw Functions
+    function drawPlayer() {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
+
+    function drawTargets() {
+        targets.forEach(target => {
+            ctx.fillStyle = target.color;
+            ctx.beginPath();
+            ctx.arc(target.x, target.y, target.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    }
+
+    function drawBullets() {
+        bullets.forEach(bullet => {
+            ctx.fillStyle = '#ffce56';
+            ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        });
+    }
+
+    // Update Target Movement (bounce off canvas edges)
+    function updateTargets() {
+        targets.forEach(target => {
+            target.x += target.vx;
+            target.y += target.vy;
+
+            if (target.x - target.size < 0 || target.x + target.size > canvas.width) {
+                target.vx *= -1;
+                target.vx *= (Math.random() * 0.5) + 0.8;
+            }
+
+            if (target.y - target.size < 0 || target.y + target.size > canvas.height - 50) {
+                target.vy *= -1;
+                target.vy *= (Math.random() * 0.5) + 0.8;
             }
         });
+    }
 
-        function showContent(contentId) {
-            var contents = document.querySelectorAll('.content > div');
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].style.display = 'none';
+    // Game Logic
+    function shoot(e) {
+        if (!gameActive || !canvas) return;
+        const rect = canvas.getBoundingClientRect();
+        bullets.push({
+            x: player.x + player.width / 2 - 2,
+            y: player.y,
+            width: 4,
+            height: 10,
+            speed: -7
+        });
+    }
+
+    function updateBullets() {
+        bullets.forEach((bullet, index) => {
+            bullet.y += bullet.speed;
+            for (let tIndex = 0; tIndex < targets.length; tIndex++) { // Use traditional for loop to handle splice
+                const target = targets[tIndex];
+                const distX = bullet.x - target.x;
+                const distY = bullet.y - target.y;
+                const distance = Math.sqrt(distX * distX + distY * distY);
+                if (distance < target.size + bullet.width) {
+                    // Hit target - show question
+                    currentTarget = target;
+                    showQuestion(target.question);
+                    bullets.splice(index, 1);
+                    targets.splice(tIndex, 1); // Remove the hit target
+                    targetsHit++;
+                    score += 10;
+                    updateScore();
+                    return; // Exit inner loop after handling hit
+                }
             }
-            document.getElementById(contentId).style.display = 'block';
+            // Remove off-screen bullets
+            if (bullet.y < 0) bullets.splice(index, 1);
+        });
+    }
+
+    function showQuestion(questionData) {
+        questionEl.textContent = questionData.text;
+        answerInput.value = '';
+        questionPanel.style.display = 'block';
+        gameActive = false; // Pause game while question is displayed
+    }
+
+    function checkAnswer() {
+        const userAnswer = answerInput.value.trim().toLowerCase();
+        if (userAnswer === currentTarget.question.correct) {
+            questionPanel.style.display = 'none';
+            gameActive = true; // Resume game
+            if (targets.length === 0) {
+                alert(`You Win! Final Score: ${score}\nThat was tough!`);
+                restartBtn.style.display = 'inline-block';
+                gameActive = false; // Keep game paused after win
+            }
+        } else {
+            alert(`Wrong Answer! Correct Answer: ${currentTarget.question.correct}\nRestarting Game...`);
+            restartGame();
         }
-        
-    </script>
-</body>
-</html>
+    }
+
+    function updateScore() {
+        if (scoreEl) { // Ensure scoreEl exists before updating
+            scoreEl.textContent = `Score: ${score} | Targets Hit: ${targetsHit}`;
+        }
+    }
+
+    function restartGame() {
+        score = 0;
+        targetsHit = 0;
+        bullets = [];
+        questionPanel.style.display = 'none';
+        restartBtn.style.display = 'none';
+        initializeGameElements(); // Re-initialize targets and game state
+        updateScore();
+        gameActive = true; // Ensure game is active after restart
+        requestAnimationFrame(gameLoop); // Restart the game loop
+    }
+
+
+    // Game Loop
+    let animationFrameId; // To store the requestAnimationFrame ID
+    function gameLoop() {
+        if (!gameActive) return; // Only run loop if game is active
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPlayer();
+        updateTargets();
+        drawTargets();
+        drawBullets();
+        updateBullets();
+        animationFrameId = requestAnimationFrame(gameLoop);
+    }
+
+    // Modified showContent function
+    function showContent(contentId) {
+        var contents = document.querySelectorAll('.content > div');
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].style.display = 'none';
+        }
+        document.getElementById(contentId).style.display = 'block';
+
+        // Special handling for the game
+        if (contentId === 'ict-quiz-blaster') {
+            // Ensure canvas and other elements are ready
+            // Call initializeGameElements to set up the game when shown
+            initializeGameElements();
+            // Stop any existing game loop to prevent multiple loops running
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            score = 0; // Reset score when navigating to game
+            targetsHit = 0;
+            updateScore();
+            gameActive = true; // Ensure game is active
+            gameLoop(); // Start the game loop
+        } else {
+            // If navigating away from the game, pause it
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            gameActive = false;
+        }
+    }
+
+    // Attach restartGame to the button in the HTML after the script loads
+    // This is important because the button is created in the HTML
+    document.addEventListener('DOMContentLoaded', () => {
+        const restartGameBtn = document.getElementById('restartBtn');
+        if (restartGameBtn) {
+            restartGameBtn.onclick = restartGame;
+        }
+    });
+
+    // Initial call to update score
+    updateScore();
+</script>
+
+    
